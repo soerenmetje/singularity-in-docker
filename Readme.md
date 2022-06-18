@@ -1,46 +1,58 @@
 # Singularity in Docker
 
-Installed Docker and want to try out Singularity? This image is for you. Skip the whole nasty install process of [Singularity](https://singularity-user-docs.readthedocs.io/en/latest/index.html).
+Installed Docker and want to try out Singularity? This image is for you. Skip the whole nasty install process
+of [Singularity](https://singularity-user-docs.readthedocs.io/en/latest/index.html).
 
 Build Singularity images and run Singularity container inside Docker.
 
 ## Supported Architectures
+
 - `linux/amd64`
 
 ## Singularity Version
+
 ```shell
 docker run --rm --privileged -v "$PWD:/app" soerenmetje/singularity:latest version
 ```
 
 ## Build Image
-`myimage.def` should be located in current host working directory. After successful execution, the image `myimage.sif` is located in same host directory.
+
+`myimage.def` should be located in current host working directory. After successful execution, the image `myimage.sif`
+is located in same host directory.
 
 ```shell
 docker run --rm --privileged -v "$PWD:/app" soerenmetje/singularity:latest build myimage.sif myimage.def
 ```
 
 ## Run Container
+
 ```shell
 docker run --rm --privileged -v "$PWD:/app" soerenmetje/singularity:latest run myimage.sif
 ```
 
 ## Interactive Session
+
 ```shell
 docker run --entrypoint "/bin/bash" --rm -it --privileged -v "$PWD:/app" soerenmetje/singularity:latest
 ```
 
 ## Other Commands
-All singularity commands can be used. 
-Instead of 
+
+All singularity commands can be used.
+Instead of
+
 ```
 singularity <command>
 ``` 
-run 
+
+run
+
 ```
 docker run --rm --privileged -v "$PWD:/app" soerenmetje/singularity:latest <command>
 ```
 
 ### Available Commands
+
 ```
 docker run --rm -it --privileged -v "$PWD:/app/singularity" soerenmetje/singularity:latest
 Usage:
