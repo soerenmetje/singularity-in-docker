@@ -5,6 +5,8 @@ of [Singularity](https://singularity-user-docs.readthedocs.io/en/latest/index.ht
 
 Build Singularity images and run Singularity container inside Docker.
 
+The source code is available on [Github](https://github.com/soerenmetje/singularity-in-docker).
+
 ## Supported Architectures
 
 - `linux/amd64`
