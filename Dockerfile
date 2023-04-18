@@ -2,7 +2,8 @@
 
 FROM ubuntu:22.04
 
-ENV GOVERSION=1.17.3
+ENV GOVERSION=1.20.3
+ENV VERSION=3.9.9
 ENV OS=linux
 ENV ARCH=amd64
 # supress Configuring keyboard-configuration
@@ -44,7 +45,26 @@ RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 ENV PATH=$PATH:/usr/local/go/bin
 
 # Install Singularity ----------------------------------------------
-RUN cd /usr/local && git clone https://github.com/hpcng/singularity.git && cd ./singularity && ./mconfig && cd ./builddir && make && make install
+
+# See Singularity releases: https://github.com/sylabs/singularity/releases
+# > 3.7.3 following syntax
+RUN wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \
+  tar -xzf singularity-ce-${VERSION}.tar.gz && \
+  mv singularity-ce-${VERSION} singularity && \
+  rm singularity-ce-${VERSION}.tar.gz
+
+# <= 3.7.3 following syntax
+#export VERSION=3.7.3 && # adjust this as necessary \
+#  wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz &&
+#  tar -xzf singularity-${VERSION}.tar.gz &&
+#  rm singularity-${VERSION}.tar.gz
+# cd singularity
+
+# Compile
+RUN cd singularity && \
+  ./mconfig && \
+  make -C ./builddir && \
+  make -C ./builddir install
 
 # Test singularity
 RUN singularity --version
