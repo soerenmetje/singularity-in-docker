@@ -25,11 +25,14 @@ dpkg-reconfigure -f noninteractive tzdata
 RUN apt-get install -y \
     build-essential \
     libseccomp-dev \
+    libglib2.0-dev \
     pkg-config \
     squashfs-tools \
     cryptsetup \
     curl wget \
-    git && rm -rf /var/lib/apt/lists/*
+    git \
+    runc \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Go ------------------------------------------------------------
 ENV GO_VERSION=1.20.3
@@ -45,7 +48,7 @@ RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 ENV PATH=$PATH:/usr/local/go/bin
 
 # Install Singularity ----------------------------------------------
-ENV SINGULARITY_VERSION=3.9.9
+ENV SINGULARITY_VERSION=3.11.1
 
 # See Singularity releases: https://github.com/sylabs/singularity/releases
 # > 3.7.3 following syntax
