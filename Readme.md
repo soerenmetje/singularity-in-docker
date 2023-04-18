@@ -1,15 +1,8 @@
 # Singularity in Docker
 
-Installed Docker and want to try out Singularity? This image is for you. Skip the whole nasty install process
-of [Singularity](https://singularity-user-docs.readthedocs.io/en/latest/index.html).
-
-Build Singularity images and run Singularity container inside Docker.
+Build Singularity images and run Singularity container inside a Docker container.
 
 The source code is available on [Github](https://github.com/soerenmetje/singularity-in-docker).
-
-## Supported Architectures
-
-- `linux/amd64`
 
 ## Singularity Version
 
@@ -90,3 +83,7 @@ Available Commands:
 Run 'singularity --help' for more detailed usage information.
 
 ```
+
+## Supported Architectures
+
+- `linux/amd64`
