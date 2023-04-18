@@ -1,6 +1,6 @@
 # Singularity in Docker
 
-Build Singularity images and run Singularity container inside a Docker container.
+Build Singularity images and run Singularity containers inside a Docker container.
 
 The source code is available on [Github](https://github.com/soerenmetje/singularity-in-docker).
 
